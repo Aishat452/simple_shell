@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Set the word you're searching for
+search_word="datash"
+
+# Set the directory where you want to search for files
+directory="."
+
+# Use the 'grep' command to search for the word in all files in the directory
+# The '-r' flag tells grep to search recursively
+# The '-l' flag tells grep to print only the names of the files that contain the word
+files=$(grep -r -l $search_word $directory)
+
+# Loop through the files and print their names
+for file in $files
+do
+    echo $file
+done
+
