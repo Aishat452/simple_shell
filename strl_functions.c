@@ -17,6 +17,7 @@ char *_strdup(const char *s)
 	_memcpy(newstr, s, len + 1);
 	return (newstr);
 }
+
 /**
  * _strlen - Returns the lenght of a string.
  * @s: string pointer
@@ -31,6 +32,7 @@ int _strlen(const char *s)
 	}
 	return (a);
 }
+
 /**
  * cmp_chars - compares the chars of strings
  * @str: string
@@ -57,6 +59,7 @@ int cmp_chars(char str[], const char *delim)
 		return (1);
 	return (0);
 }
+
 /**
  * _strtok - splits a string by delimiter.
  * @str: string
@@ -93,22 +96,26 @@ char *_strtok(char str[], const char *delim)
 			{
 				*split_ptr = '\0';
 				if (split_ptr == str_start)
-					/*if it points to a delimiter, move it*/
+
+				/*if it points to a delimiter, move it*/
 					str_start++;
 				break;
 			}
 		}
 		if (bool == 0 && *split_ptr)
-			bool = 1;/*if the token has non-delimiter characters set flag*/
+
+		/*if the token has non-delimiter characters set flag*/
+			bool = 1;
 	}
 	if (bool == 0)
 		return (NULL);
 	return (str_start);
 }
+
 /**
  * _isdigit - defines if string is a number
  * @s: string
- * Return: 1, 0
+ * Return: 1, 0 
  */
 int _isdigit(const char *s)
 {
