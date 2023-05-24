@@ -103,16 +103,16 @@ r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
 
 /* str_functions.c */
-char *_strcat(char *new_str, const char *src);
+char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-char *_strshr(char *s, char c);
-int _strpln(char *s, char *accept);
+char *_strchr(char *s, char c);
+int _strspn(char *s, char *accept);
 
 /* mem._func.c */
-void _memcpy(void *destptr, const void *src_ptr, unsigned int size);
-void *_realloc(void *src_ptr, unsigned int old_size, unsigned int new_size);
-char **_reallocdp(char **src_ptr, unsigned int old_size, unsigned int new_size);
+void _memcpy(void *newptr, const void *ptr, unsigned int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
 /* strl_functions.c */
 char *_strdup(const char *s);
