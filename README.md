@@ -13,7 +13,7 @@ The shell is a command line interface (CLI) program that takes commands from the
 | `MAIN.H`  | Containing prototypes of functions used |
 | `MAIN.C`  | Entry point of shell program |
 | `exit.c`  | Exit the shell|
-| `get_line.c| gets a line |
+| `get_line.c`| gets a line |
 
 
 

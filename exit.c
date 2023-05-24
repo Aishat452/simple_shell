@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * exitShell - this exits the shell.
- * @commandArg: relevance data(status and args)
+ * exitShell - this exits the shell
+ * @commandArg: relevant data
  * Return: 0
  */
 int exitShell(param *commandArg)
