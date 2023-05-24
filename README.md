@@ -54,7 +54,7 @@ The shell is a command line interface (CLI) program that takes commands from the
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/blessingudeji_)
 
 ## Lesson Learned :page_with_curl
-Shell Commands and Navigation.
+Shell Commands and Navigation
 I/O and more
 
 
