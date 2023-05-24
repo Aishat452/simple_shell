@@ -2,7 +2,7 @@
 
 /**
  * get_help - A function that gets help messages
- * @commandArg: data structure
+ * @commandArg: data structure.
  * Return: 0
 */
 int get_help(param *commandArg)
