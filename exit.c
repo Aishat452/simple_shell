@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * exitShell - this exits the shell
+ * exitShell - this exits the shell.
  * @commandArg: relevance data(status and args)
  * Return: 0
  */
