@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * sepNode - adds a separator
+ * sepNode - adds a separator.
  * @head: head of the linked list.
  * @sep: separator
  * Return: the address
