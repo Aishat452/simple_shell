@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strcat_cd - A function that concatenates a message for cd error
+ * strcat_cd - A function that concatenates a message for cd error.
  * @commandArg: relevant data
  * @msg: message to be printed
  * @error: output message
