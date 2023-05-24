@@ -25,11 +25,12 @@ char *_strdup(const char *s)
  */
 int _strlen(const char *s)
 {
-	int i;
+	int len;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{}
-	return (i);
+	for (len = 0; s[len] != 0; len++)
+	{
+	}
+	return (len);
 }
 
 /**
@@ -74,20 +75,21 @@ char *_strtok(char str[], const char *delim)
 	{
 		if (cmp_chars(str, delim))
 			return (NULL);
-		splitted = str;
+		splitted = str; /*Store first address*/
 		i = _strlen(str);
-		str_end = &str[i];
+		str_end = &str[i]; /*Store last address*/
 	}
 	str_start = splitted;
-	if (str_start == str_end)
+	if (str_start == str_end) /*Reaching the end*/
 		return (NULL);
 
 	for (bool = 0; *splitted; splitted++)
 	{
+		/*Breaking loop finding the next token*/
 		if (splitted != str_start)
 			if (*splitted && *(splitted - 1) == '\0')
 				break;
-
+		/*Replacing delimiter for null char*/
 		for (i = 0; delim[i]; i++)
 		{
 			if (*splitted == delim[i])
@@ -98,10 +100,10 @@ char *_strtok(char str[], const char *delim)
 				break;
 			}
 		}
-		if (bool == 0 && *splitted)
+		if (bool == 0 && *splitted) /*Str != Delim*/
 			bool = 1;
 	}
-	if (bool == 0)
+	if (bool == 0) /*Str == Delim*/
 		return (NULL);
 	return (str_start);
 }
