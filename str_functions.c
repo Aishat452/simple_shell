@@ -2,45 +2,45 @@
 
 /**
  * _strcat - concat two string
- * @new_str: char pointer
+ * @dest: char pointer
  * @src: const pointer
- * Return: new_str
+ * Return: dest
  */
-char *_strcat(char *new_str, const char *src)
+char *_strcat(char *dest, const char *src)
 {
-	int len = 0, i = 0;
+	int i;
+	int j;
 
-	while (new_str[len] != '\0')
-		len++;
+	for (i = 0; dest[i] != '\0'; i++)
+		;
 
-	while (src[i] != '\0')
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		new_str[len] = src[i];
-		len++;
+		dest[i] = src[j];
 		i++;
 	}
-	new_str[len] = '\0';
 
-	return new_str;
+	dest[i] = '\0';
+	return (dest);
 }
 /**
  * *_strcpy - Copies string
- * @new_str: char pointer
- * @src: pointer to the source string
- * Return: new_str
+ * @dest: char pointer
+ * @src: points to the source of string
+ * Return: dest
  */
-char *_strcpy(char *new_str, char *src)
+char *_strcpy(char *dest, char *src)
 {
 
-	size_t i;
+	size_t a;
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (a = 0; src[a] != '\0'; a++)
 	{
-		new_str[i] = src[i];
+		dest[a] = src[a];
 	}
-	new_str[i] = '\0';
+	dest[a] = '\0';
 
-	return (new_str);
+	return (dest);
 }
 /**
  * _strcmp - compares two strings
@@ -58,18 +58,16 @@ int _strcmp(char *s1, char *s2)
 	if (s1[i] > s2[i])
 		return (1);
 	if (s1[i] < s2[i])
-
-		/* if s1 is less than s2*/
 		return (-1);
 	return (0);
 }
 /**
- * _strshr - locates char in string
+ * _strchr - locates char in string
  * @s: string
  * @c: character
  * Return: pointer
  */
-char *_strshr(char *s, char c)
+char *_strchr(char *s, char c)
 {
 	unsigned int i = 0;
 
@@ -81,22 +79,21 @@ char *_strshr(char *s, char c)
 	return ('\0');
 }
 /**
- * _strpln - computes the length of string
- * @s: string
+ * _strspn - the length of string
+ * @s: initial seg
  * @accept: bytes that are accepted
  * Return: num of bytes
  */
-int _strpln(char *s, char *accept)
+int _strspn(char *s, char *accept)
 {
-	int a, b, bool;
+	int i, j, bool;
 
-	for (a = 0; *(s + a) != '\0'; a++)
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		/*This flag tracks if the byte is accepted or not*/
 		bool = 1;
-		for (b = 0; *(accept + b) != '\0'; b++)
+		for (j = 0; *(accept + j) != '\0'; j++)
 		{
-			if (*(s + a) == *(accept + b))
+			if (*(s + i) == *(accept + j))
 			{
 				bool = 0;
 				break;
@@ -105,5 +102,5 @@ int _strpln(char *s, char *accept)
 		if (bool == 1)
 			break;
 	}
-	return (a);
+	return (i);
 }
