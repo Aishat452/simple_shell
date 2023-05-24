@@ -2,7 +2,7 @@
 
 
 /**
- * copy_info - copies info to create
+ * copy_info - copies info to create.
  * a new env
  * @name: name
  * @value: value
