@@ -2,19 +2,19 @@
 
 /**
  * _memcpy - copies info between the void pointers.
- * @dest_ptr: destination pointer.
+ * @newptr: destination pointer.
  * @ptr: source pointer
  * @size: new pointer size
  * Return: void
  */
-void _memcpy(void *dest_ptr, const void *ptr, unsigned int size)
+void _memcpy(void *newptr, const void *ptr, unsigned int size)
 {
 	char *char_ptr = (char *)ptr;
-	char *char_dest_ptr = (char *)dest_ptr;
+	char *char_newptr = (char *)newptr;
 	unsigned int a;
 
 	for (a = 0; a < size; a++)
-		char_dest_ptr[a] = char_ptr[a];
+		char_newptr[a] = char_ptr[a];
 }
 
 /**
@@ -26,7 +26,7 @@ void _memcpy(void *dest_ptr, const void *ptr, unsigned int size)
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *dest_ptr;
+	void *newptr;
 
 	if (ptr == NULL)
 		return (malloc(new_size));
@@ -40,17 +40,17 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (new_size == old_size)
 		return (ptr);
 
-	dest_ptr = malloc(new_size);
-	if (dest_ptr == NULL)
+	newptr = malloc(new_size);
+	if (newptr == NULL)
 		return (NULL);
 	/*Copy the data from the old memory block to the new memory block*/
 	if (new_size < old_size)
-		_memcpy(dest_ptr, ptr, new_size);
+		_memcpy(newptr, ptr, new_size);
 	else
-		_memcpy(dest_ptr, ptr, old_size);
+		_memcpy(newptr, ptr, old_size);
 
 	free(ptr);
-	return (dest_ptr);
+	return (newptr);
 }
 
 /**
@@ -62,7 +62,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
-	char **dest_ptr;
+	char **newptr;
 	unsigned int i;
 
 	if (ptr == NULL)
@@ -71,14 +71,14 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 	if (new_size == old_size)
 		return (ptr);
 
-	dest_ptr = malloc(sizeof(char *) * new_size);
-	if (dest_ptr == NULL)
+	newptr = malloc(sizeof(char *) * new_size);
+	if (newptr == NULL)
 		return (NULL);
 
 	for (i = 0; i < old_size; i++)
-		dest_ptr[i] = ptr[i];
+		newptr[i] = ptr[i];
 
 	free(ptr);
 
-	return (dest_ptr);
+	return (newptr);
 }
