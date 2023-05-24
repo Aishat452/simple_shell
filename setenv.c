@@ -1,4 +1,6 @@
 #include "main.h"
+
+
 /**
  * copy_info - copies info to create.
  * a new env
@@ -19,8 +21,10 @@ char *copy_info(char *name, char *value)
 	_strcat(new, "=");
 	_strcat(new, value);
 	_strcat(new, "\0");
+
 	return (new);
 }
+
 /**
  * set_env - sets environment variable
  * @name: name
@@ -52,6 +56,7 @@ void set_env(char *name, char *value, param *commandArg)
 	commandArg->_environ[i] = copy_info(name, value);
 	commandArg->_environ[i + 1] = NULL;
 }
+
 /**
  * _setenv - compares env variables names
  * @commandArg: relevant data
@@ -65,9 +70,12 @@ int _setenv(param *commandArg)
 		get_error(commandArg, -1);
 		return (1);
 	}
+
 	set_env(commandArg->args[1], commandArg->args[2], commandArg);
+
 	return (1);
 }
+
 /**
  * _unsetenv - deletes an environment variable
  * @commandArg: relevant data
@@ -87,7 +95,7 @@ int _unsetenv(param *commandArg)
 	k = -1;
 	for (i = 0; commandArg->_environ[i]; i++)
 	{
-		var_env = _strdup(commandArg->_environ[i]);/*Duplicate the env var*/
+		var_env = _strdup(commandArg->_environ[i]);
 		name_env = _strtok(var_env, "=");
 		if (_strcmp(name_env, commandArg->args[1]) == 0)
 		{
@@ -97,7 +105,7 @@ int _unsetenv(param *commandArg)
 	}
 	if (k == -1)
 	{
-		get_error(commandArg, -1); /*Print error msg for var not found*/
+		get_error(commandArg, -1);
 		return (1);
 	}
 	realloc_environ = malloc(sizeof(char *) * (i));

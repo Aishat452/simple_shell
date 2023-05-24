@@ -8,18 +8,19 @@
  */
 char *_strcat(char *dest, const char *src)
 {
-	int a, b;
+	int i;
+	int j;
 
-	for (a = 0; dest[a] != '\0'; a++)
+	for (i = 0; dest[i] != '\0'; i++)
 		;
 
-	for (b = 0; src[b] != '\0'; b++)
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		dest[a] = src[b];
-		a++;
+		dest[i] = src[j];
+		i++;
 	}
 
-	dest[a] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 /**
@@ -31,13 +32,13 @@ char *_strcat(char *dest, const char *src)
 char *_strcpy(char *dest, char *src)
 {
 
-	size_t i;
+	size_t a;
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (a = 0; src[a] != '\0'; a++)
 	{
-		dest[i] = src[i];
+		dest[a] = src[a];
 	}
-	dest[i] = '\0';
+	dest[a] = '\0';
 
 	return (dest);
 }
@@ -85,23 +86,21 @@ char *_strchr(char *s, char c)
  */
 int _strspn(char *s, char *accept)
 {
-	int a, b, bool;
+	int i, j, bool;
 
-	for (a = 0; *(s + a) != '\0'; a++)
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		/*the flag is to track if the byte is accepted or not*/
 		bool = 1;
-		for (b = 0; *(accept + b) != '\0'; b++)
+		for (j = 0; *(accept + j) != '\0'; j++)
 		{
-			if (*(s + a) == *(accept + b))
+			if (*(s + i) == *(accept + j))
 			{
 				bool = 0;
 				break;
 			}
 		}
 		if (bool == 1)
-			/*Exit the loop if byte is not accepted*/
 			break;
 	}
-	return (a);
+	return (i);
 }
