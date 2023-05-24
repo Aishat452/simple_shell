@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * displayHelp_env - Help information for env
+ * displayHelp_env - Help information for env.
  * Return: void
  */
 void displayHelp_env(void)
