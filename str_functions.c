@@ -8,8 +8,7 @@
  */
 char *_strcat(char *dest, const char *src)
 {
-	int i;
-	int j;
+	int i, j;
 
 	for (i = 0; dest[i] != '\0'; i++)
 		;
@@ -90,7 +89,7 @@ int _strspn(char *s, char *accept)
 
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		bool = 1;
+		bool = 1;/*Flag to track if the byte is accepted or not*/
 		for (j = 0; *(accept + j) != '\0'; j++)
 		{
 			if (*(s + i) == *(accept + j))
@@ -100,7 +99,7 @@ int _strspn(char *s, char *accept)
 			}
 		}
 		if (bool == 1)
-			break;
+			break;/*Exit the loop if byte is not accepted*/
 	}
 	return (i);
 }

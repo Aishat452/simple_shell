@@ -43,12 +43,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	newptr = malloc(new_size);
 	if (newptr == NULL)
 		return (NULL);
-
+	/*Copy the data from the old memory block to the new memory block*/
 	if (new_size < old_size)
 		_memcpy(newptr, ptr, new_size);
 	else
 		_memcpy(newptr, ptr, old_size);
-
+	/*Free the old memory block*/
 	free(ptr);
 	return (newptr);
 }

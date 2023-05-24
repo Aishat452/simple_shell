@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _strdup - duplicates a string in heap memory.
  * @s: string pointer
@@ -17,7 +16,6 @@ char *_strdup(const char *s)
 	_memcpy(new, s, len + 1);
 	return (new);
 }
-
 /**
  * _strlen - Returns the lenght of a string.
  * @s: string pointer
@@ -32,7 +30,6 @@ int _strlen(const char *s)
 	}
 	return (len);
 }
-
 /**
  * cmp_chars - compares the chars of strings
  * @str: string
@@ -58,12 +55,11 @@ int cmp_chars(char str[], const char *delim)
 		return (1);
 	return (0);
 }
-
 /**
- * _strtok - splits a string by delimiter.
+ * _strtok - splits a string into tokens
  * @str: string
  * @delim: delimiter
- * Return: splited string
+ * Return: the next token or NULL
  */
 char *_strtok(char str[], const char *delim)
 {
@@ -75,21 +71,21 @@ char *_strtok(char str[], const char *delim)
 	{
 		if (cmp_chars(str, delim))
 			return (NULL);
-		splitted = str; /*Store first address*/
+		splitted = str;
 		i = _strlen(str);
-		str_end = &str[i]; /*Store last address*/
+		str_end = &str[i];
 	}
-	str_start = splitted;
-	if (str_start == str_end) /*Reaching the end*/
-		return (NULL);
+	str_start = splitted;/*Save the starting point of the token*/
+	if (str_start == str_end)
+		return (NULL);/*NULL if there are no more tokens*/
 
 	for (bool = 0; *splitted; splitted++)
 	{
-		/*Breaking loop finding the next token*/
+
 		if (splitted != str_start)
 			if (*splitted && *(splitted - 1) == '\0')
 				break;
-		/*Replacing delimiter for null char*/
+
 		for (i = 0; delim[i]; i++)
 		{
 			if (*splitted == delim[i])
@@ -100,14 +96,13 @@ char *_strtok(char str[], const char *delim)
 				break;
 			}
 		}
-		if (bool == 0 && *splitted) /*Str != Delim*/
-			bool = 1;
+		if (bool == 0 && *splitted)
+			bool = 1;/*Set the flag(bool) if token has non-delimiter characters*/
 	}
-	if (bool == 0) /*Str == Delim*/
+	if (bool == 0)
 		return (NULL);
 	return (str_start);
 }
-
 /**
  * _isdigit - defines if string is a number
  * @s: string
