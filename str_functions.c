@@ -21,7 +21,7 @@ char *_strcat(char *new_str, const char *src)
 	}
 	new_str[len] = '\0';
 
-	return new_str;
+	return (new_str);
 }
 /**
  * *_strcpy - Copies string
