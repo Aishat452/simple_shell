@@ -2,7 +2,7 @@
 
 /**
  * exitShell - this exits the shell.
- * @commandArg: relevance data(status and args)
+ * @commandArg: relevance data(status and args).
  * Return: 0
  */
 int exitShell(param *commandArg)
