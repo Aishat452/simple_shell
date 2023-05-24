@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * error_env - error message for env
- * @commandArg: relevant data
+ * error_env - error message for env.
+ * @commandArg: relevant data (arguments, counter)
  * Return: error
  */
 char *error_env(param *commandArg)
@@ -36,9 +36,10 @@ char *error_env(param *commandArg)
 	return (error);
 }
 /**
- * error_path_126 - error for path
- * @commandArg: relevant data
- * Return: error
+ * error_path_126 - error for path and failure denied permission.
+ * @commandArg: data relevant (arguments, counter).
+ *
+ * Return: string error
  */
 char *error_path_126(param *commandArg)
 {

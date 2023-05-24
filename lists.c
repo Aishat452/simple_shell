@@ -28,7 +28,7 @@ sep_list *sepNode(sep_list **head, char sep)
 			reset_node = reset_node->next;
 		reset_node->next = new;
 	}
-	/*the updated head of the list is returned*/
+
 	return (*head);
 }
 
@@ -75,15 +75,12 @@ line_list *lineNode(line_list **head, char *line)
 
 	if (reset_node == NULL)
 	{
-		/*if the list is empty, make new node the head*/
 		*head = new;
 	}
 	else
 	{
 		while (reset_node->next != NULL)
 			reset_node = reset_node->next;
-
-		/*Append the new node at the end of the list*/
 		reset_node->next = new;
 	}
 
@@ -108,7 +105,6 @@ void freeLinelist(line_list **head)
 			current_node = current_node->next;
 			free(reset_node);
 		}
-		/*Set the head to NULL to indicate an empty list*/
 		*head = NULL;
 	}
 }
