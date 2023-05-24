@@ -3,33 +3,33 @@
 /**
  * _strdup - duplicates a string in heap memory.
  * @s: string pointer
- * Return: string
+ * Return: duplicated string
  */
 char *_strdup(const char *s)
 {
-	char *new;
+	char *newstr;
 	size_t len;
 
 	len = _strlen(s);
-	new = malloc(sizeof(char) * (len + 1));
-	if (new == NULL)
+	newstr = malloc(sizeof(char) * (len + 1));
+	if (newstr == NULL)
 		return (NULL);
-	_memcpy(new, s, len + 1);
-	return (new);
+	_memcpy(newstr, s, len + 1);
+	return (newstr);
 }
 /**
  * _strlen - Returns the lenght of a string.
  * @s: string pointer
- * Return: 0
+ * Return: length of string
  */
 int _strlen(const char *s)
 {
-	int len;
+	int a;
 
-	for (len = 0; s[len] != 0; len++)
+	for (a = 0; s[a] != 0; a++)
 	{
 	}
-	return (len);
+	return (a);
 }
 /**
  * cmp_chars - compares the chars of strings
@@ -39,20 +39,21 @@ int _strlen(const char *s)
  */
 int cmp_chars(char str[], const char *delim)
 {
-	unsigned int i, j, k;
+	unsigned int a, b, c;
 
-	for (i = 0, k = 0; str[i]; i++)
+	for (a = 0, c = 0; str[a]; a++)
 	{
-		for (j = 0; delim[j]; j++)
+		for (b = 0; delim[b]; b++)
 		{
-			if (str[i] == delim[j])
+			if (str[a] == delim[b])
 			{
-				k++;
+				c++;
 				break;
 			}
 		}
 	}
-	if (i == k)
+	/*if all characters in str are found in delim*/
+	if (a == c)
 		return (1);
 	return (0);
 }
@@ -60,77 +61,62 @@ int cmp_chars(char str[], const char *delim)
  * _strtok - splits a string by delimiter.
  * @str: string
  * @delim: delimiter
- * Return: splited string
+ * Return: next token or NULL
  */
 char *_strtok(char str[], const char *delim)
 {
-	static char *splitted, *str_end;
+	static char *split_ptr, *str_end;
 	char *str_start;
-	unsigned int i, bool;
+	unsigned int a, bool;
 
 	if (str != NULL)
 	{
 		if (cmp_chars(str, delim))
 			return (NULL);
-		splitted = str; /*Store first address*/
-		i = _strlen(str);
-		str_end = &str[i]; /*Store last address*/
+		split_ptr = str;
+		a = _strlen(str);
+		str_end = &str[a];
 	}
-	str_start = splitted;
-	if (str_start == str_end) /*Reaching the end*/
+	str_start = split_ptr;
+	if (str_start == str_end)
 		return (NULL);
 
-	for (bool = 0; *splitted; splitted++)
+	for (bool = 0; *split_ptr; split_ptr++)
 	{
-		/*Breaking loop finding the next token*/
-		if (splitted != str_start)
-			if (*splitted && *(splitted - 1) == '\0')
+		if (split_ptr != str_start)
+			if (*split_ptr && *(split_ptr - 1) == '\0')
 				break;
-		/*Replacing delimiter for null char*/
-		for (i = 0; delim[i]; i++)
+
+		for (a = 0; delim[a]; a++)
 		{
-			if (*splitted == delim[i])
+			if (*split_ptr == delim[a])
 			{
-<<<<<<< HEAD
 				*split_ptr = '\0';
 				if (split_ptr == str_start)
 					/*if it points to a delimiter, move it*/
-=======
-				*splitted = '\0';
-				if (splitted == str_start)
->>>>>>> parent of 2f71268... third commit
 					str_start++;
 				break;
 			}
 		}
-<<<<<<< HEAD
 		if (bool == 0 && *split_ptr)
 			bool = 1;/*if the token has non-delimiter characters set flag*/
-=======
-		if (bool == 0 && *splitted) /*Str != Delim*/
-			bool = 1;
->>>>>>> parent of 2f71268... third commit
 	}
-	if (bool == 0) /*Str == Delim*/
+	if (bool == 0)
 		return (NULL);
 	return (str_start);
 }
 /**
  * _isdigit - defines if string is a number
  * @s: string
-<<<<<<< HEAD
  * Return: 1, 0
-=======
- * Return: 1, 0 if otherwise
->>>>>>> parent of 2f71268... third commit
  */
 int _isdigit(const char *s)
 {
-	unsigned int i;
+	unsigned int a;
 
-	for (i = 0; s[i]; i++)
+	for (a = 0; s[a]; a++)
 	{
-		if (s[i] < 48 || s[i] > 57)
+		if (s[a] < 48 || s[a] > 57)
 			return (0);
 	}
 	return (1);
