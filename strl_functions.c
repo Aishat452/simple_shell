@@ -7,15 +7,15 @@
  */
 char *_strdup(const char *s)
 {
-	char *new;
+	char *new_str;
 	size_t len;
 
 	len = _strlen(s);
-	new = malloc(sizeof(char) * (len + 1));
-	if (new == NULL)
+	new_str = malloc(sizeof(char) * (len + 1));
+	if (new_str == NULL)
 		return (NULL);
-	_memcpy(new, s, len + 1);
-	return (new);
+	_memcpy(new_str, s, len + 1);
+	return (new_str);
 }
 
 /**
@@ -41,33 +41,33 @@ int _strlen(const char *s)
  */
 int cmp_chars(char str[], const char *delim)
 {
-	unsigned int i, j, k;
+	unsigned int a, b, c;
 
-	for (i = 0, k = 0; str[i]; i++)
+	for (a = 0, b = 0; str[a]; a++)
 	{
-		for (j = 0; delim[j]; j++)
+		for (b = 0; delim[b]; b++)
 		{
-			if (str[i] == delim[j])
+			if (str[a] == delim[b])
 			{
-				k++;
+				c++;
 				break;
 			}
 		}
 	}
-	if (i == k)
+	if (a == c)
 		return (1);
 	return (0);
 }
 
 /**
- * _strtok - splits a string by delimiter.
+ * _strtok - splits a string into tokens
  * @str: string
  * @delim: delimiter
- * Return: splited string
+ * Return: pointer to next token or NULL
  */
 char *_strtok(char str[], const char *delim)
 {
-	static char *splitted, *str_end;
+	static char *split_ptr, *str_end;
 	char *str_start;
 	unsigned int i, bool;
 
@@ -75,35 +75,36 @@ char *_strtok(char str[], const char *delim)
 	{
 		if (cmp_chars(str, delim))
 			return (NULL);
-		splitted = str; /*Store first address*/
+		split_ptr = str;
 		i = _strlen(str);
-		str_end = &str[i]; /*Store last address*/
+		str_end = &str[i];
 	}
-	str_start = splitted;
-	if (str_start == str_end) /*Reaching the end*/
+	str_start = split_ptr;
+	if (str_start == str_end)
 		return (NULL);
 
-	for (bool = 0; *splitted; splitted++)
+	for (bool = 0; *split_ptr; split_ptr++)
 	{
-		/*Breaking loop finding the next token*/
-		if (splitted != str_start)
-			if (*splitted && *(splitted - 1) == '\0')
+
+		if (split_ptr != str_start)
+			if (*split_ptr && *(split_ptr - 1) == '\0')
 				break;
-		/*Replacing delimiter for null char*/
 		for (i = 0; delim[i]; i++)
 		{
-			if (*splitted == delim[i])
+			if (*split_ptr == delim[i])
 			{
-				*splitted = '\0';
-				if (splitted == str_start)
+				*split_ptr = '\0';
+				if (split_ptr == str_start)
 					str_start++;
 				break;
 			}
 		}
-		if (bool == 0 && *splitted) /*Str != Delim*/
+		/*Set flag(bool) to 1 if a token is found*/
+		if (bool == 0 && *split_ptr)
 			bool = 1;
 	}
-	if (bool == 0) /*Str == Delim*/
+	/*determines if any tokens were found*/
+	if (bool == 0)
 		return (NULL);
 	return (str_start);
 }

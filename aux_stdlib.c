@@ -44,6 +44,7 @@ char *aux_itoa(int n)
 
 	*(str_buffer + length) = '\0';
 
+	/*Determining if the number is negative*/
 	if (n < 0)
 	{
 		absolute_num = n * -1;
@@ -77,9 +78,11 @@ int _atoi(char *s)
 
 	while (*(s + str_len) != '\0')
 	{
+		/*if non-numeric character encountered after numeric characters,break*/
 		if (num_size > 0 && (*(s + str_len) < '0' || *(s + str_len) > '9'))
 			break;
 
+		/*Handle sign of the number*/
 		if (*(s + str_len) == '-')
 			sign *= -1;
 
@@ -91,7 +94,7 @@ int _atoi(char *s)
 		}
 		str_len++;
 	}
-
+	/*Converting string to integer*/
 	for (i = str_len - num_size; i < str_len; i++)
 	{
 		result = result + ((*(s + i) - 48) * multiplier);
