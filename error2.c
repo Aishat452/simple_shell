@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * error_env - error message for env
+ * error_env - error message for env.
  * @commandArg: relevant data (arguments, counter)
  * Return: error
  */
