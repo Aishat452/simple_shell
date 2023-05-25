@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * read_line - read input of str
+ * read_line - read input of str.
  * @i_eof: returns value of the getline
  * Return: returns the input str
  */
